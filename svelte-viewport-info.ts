@@ -172,6 +172,13 @@
 
     window.addEventListener('resize', determineViewportSizeAndScreenOrientation)
 
+    if ('orientation' in screen) {
+      screen.orientation.addEventListener('change', function () {
+        setTimeout(determineViewportSizeAndScreenOrientation,10)
+      })
+    }
+
+
   export default {
     get Width ()  { return ViewportWidth },
     get Height () { return ViewportHeight },
