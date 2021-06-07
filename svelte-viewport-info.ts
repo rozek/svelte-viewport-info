@@ -27,8 +27,12 @@
     determineViewportSize()
   /**** determineScreenOrientation ****/
 
-    let ScreenOrientation:'portrait'|'landscape'
-    let detailledScreenOrientation:'portrait-primary'|'portrait-secondary'|'landscape-primary'|'landscape-secondary'|undefined
+    type Orientation          = 'portrait'|'landscape'
+    type detailledOrientation = 'portrait-primary'|'portrait-secondary'|'landscape-primary'|'landscape-secondary'
+
+    let ScreenOrientation:Orientation|undefined                   = undefined
+    let detailledScreenOrientation:detailledOrientation|undefined = undefined
+                        // explicit initialization is needed to satisfy compiler
 
     function determineScreenOrientation ():void {
       let Orientation
@@ -71,25 +75,39 @@
       }
     }
 
-    determineScreenOrientation()                   // uses viewport_width/height
+    determineScreenOrientation()                    // uses ViewportWidth/Height
 
   /**** handle problem that "orientationchange" is fired too soon ****/
 
     let oldViewportWidth  = ViewportWidth
     let oldViewportHeight = ViewportHeight
 
+    let oldScreenOrientation:Orientation|undefined                   = ScreenOrientation
+    let oldDetailledScreenOrientation:detailledOrientation|undefined = detailledScreenOrientation
+
     function rememberSettings ():void {
       oldViewportWidth  = ViewportWidth
       oldViewportHeight = ViewportHeight
+
+      oldScreenOrientation          = ScreenOrientation
+      oldDetailledScreenOrientation = detailledScreenOrientation
     }
 
     function submitEvents ():void {
-      document.body.dispatchEvent(
-        new Event('viewportchanged', { bubbles:true, cancelable:true })
-      )
-      document.body.dispatchEvent(
-        new Event('orientationchangeend', { bubbles:true, cancelable:true })
-      )
+      if ((oldViewportWidth !== ViewportWidth) || (oldViewportHeight !== ViewportHeight)) {
+        document.body.dispatchEvent(
+          new Event('viewportchanged', { bubbles:true, cancelable:true })
+        )
+      }
+
+      if (
+        (oldScreenOrientation          !== ScreenOrientation) ||
+        (oldDetailledScreenOrientation !== detailledScreenOrientation)
+      ) {
+        document.body.dispatchEvent(
+          new Event('orientationchangeend', { bubbles:true, cancelable:true })
+        )
+      }
     }
 
     let   Poller:any   // right now, it's difficult to determine the proper type
@@ -116,9 +134,9 @@
 
         stopPolling()
 
-        determineScreenOrientation()   // uses viewport_width/height as fallback
-        rememberSettings()
+        determineScreenOrientation()    // uses ViewportWidth/Height as fallback
         submitEvents()
+        rememberSettings()
       }, 100)
     }
 
@@ -130,8 +148,8 @@
 
       if (Poller != null) {      // we are still polling because of former event
         stopPolling()
-        rememberSettings()
         submitEvents()
+        rememberSettings()
       }
 
       if (
@@ -140,8 +158,8 @@
       ) {        // screen size did not (yet) change => start polling for change
         pollForViewportAfterOrientationChange()
       } else {                   // viewport size changed in time => do not poll
-        rememberSettings()
         submitEvents()
+        rememberSettings()
       }
     }
   // see https://github.com/gajus/orientationchangeend
@@ -158,6 +176,7 @@
     get Width ()  { return ViewportWidth },
     get Height () { return ViewportHeight },
 
-    get Orientation () { return ScreenOrientation },
+    get Orientation ()          { return ScreenOrientation },
+    get detailledOrientation () { return detailledScreenOrientation },
   }
 
