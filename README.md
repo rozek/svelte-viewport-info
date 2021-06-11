@@ -48,7 +48,6 @@ This package determines the current viewport size and device (or viewport) orien
 
 The package's finding may either be retrieved using JavaScript or by styling a few CSS classes which are added to or removed from the document body depending on the current viewport `Orientation` or `detailledOrientation`.
 
-
 #### JavaScript API ####
 
 This package offers a JavaScript `default` export, which may be imported as follows
