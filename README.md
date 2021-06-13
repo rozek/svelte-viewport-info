@@ -80,6 +80,8 @@ When used in another environment than Svelte, please keep in mind, that screen o
   })
 ```
 
+but keep in mind, that `DOMContentLoaded` will only be emitted once - i.e., if you run the shown code *after* the page has already been loaded, the callback will never be executed!
+
 ### Example ###
 
 An example is available on the Svelte REPL - feel free to play with it!
