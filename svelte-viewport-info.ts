@@ -75,7 +75,13 @@
       }
     }
 
-    determineScreenOrientation()                    // uses ViewportWidth/Height
+    switch (document.readyState) {
+      case 'interactive':
+      case 'complete':
+        determineScreenOrientation()                // uses ViewportWidth/Height
+      default:
+        window.addEventListener('DOMContentLoaded', determineScreenOrientation)
+    }
 
   /**** handle problem that "orientationchange" is fired too soon ****/
 
