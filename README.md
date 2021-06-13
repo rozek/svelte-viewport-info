@@ -153,4 +153,4 @@ In addition, the package also adds or removes the following CSS classes dependin
 * `Landscape-primary` - indicates that the device is currently in its primary "Landscape" orientation
 * `Landscape-secondary` - indicates that the device is currently in its secondary "Landscape" orientation
 
-Any of the listed CSS classes is set only if the package can actually recognize the corresponding orientation - otherwise, it is missing.
+Any of the listed CSS classes is set only if the package actually recognizes the corresponding orientation - otherwise, it is missing.
