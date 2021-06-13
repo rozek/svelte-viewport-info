@@ -81,7 +81,7 @@ When used in another environment than Svelte, please note, that screen orientati
 
   if (
     (document.readyState === 'interactive') ||
-    (document.readyState === 'complete)
+    (document.readyState === 'complete')
   ) {
     Example()
   } else {
