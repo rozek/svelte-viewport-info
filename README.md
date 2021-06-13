@@ -58,7 +58,7 @@ Alternatively, you may access the global Variable `Viewport` directly.
 
 ### Usage in other Environments than Svelte ###
 
-When used in another environment than Svelte, please keep in mind, that screen orientation is only available when `(document.readyState === 'interactive') || (document.readyState === 'complete')`. As a consequence, you should make sure, that the document has been completely loaded
+When used in another environment than Svelte, please keep in mind, that screen orientation is only available when the `document.readyState` is either `'interactive'` or `'complete'`. As a consequence, you should make sure, that the document has been fully loaded, e.g., using
 
 ```
   window.addEventListener('DOMContentLoaded', () => {
@@ -126,6 +126,13 @@ These events may easily be caught as follows
   on:viewportchanged={...}
   on:orientationchangeend={...}
 />
+```
+
+or
+
+```
+document.body.addEventListener('viewportchanged',...)
+document.body.addEventListener('orientationchangeend',...)
 ```
 
 ### CSS Classes ###
