@@ -58,7 +58,7 @@ Alternatively, you may access the global Variable `Viewport` directly.
 
 ### Usage in other Environments than Svelte ###
 
-When used in another environment than Svelte, please keep in mind, that screen orientation is only available when the `document.readyState` is either `'interactive'` or `'complete'`. As a consequence, you should make sure, that the document has been fully loaded, e.g., using
+When used in another environment than Svelte, please note, that screen orientation is only available when the `document.readyState` is either `'interactive'` or `'complete'`. As a consequence, you should make sure, that the document has been fully loaded, e.g., using
 
 ```
   window.addEventListener('DOMContentLoaded', () => {
