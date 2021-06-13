@@ -1,16 +1,36 @@
 # svelte-viewport-info #
 
-informs about viewport size and orientation
+informs about viewport size and orientation (not only in Svelte)
 
 **NPM users**: please consider the [Github README](https://github.com/rozek/svelte-viewport-info/blob/main/README.md) for the latest description of this package (as updating the docs would otherwise always require a new NPM package version)
 
 ### Installation ###
 
+`svelte-viewport-info` may be used as an ESM, CommonJS or AMD module or from a global variable.
+
+You may either install the package into your build environment
+
 ```
 npm install svelte-viewport-info
 ```
 
-### Usage ###
+or load the plain script file directly
+
+```
+<script src="https://unpkg.com/svelte-viewport-info"></script>
+```
+
+### Access ###
+
+How to access the package depends on the type of module you prefer
+
+* ESM: `import Viewport from 'svelte-viewport-info'`
+* CommonJS: `const Viewport = require('svelte-viewport-info')`
+* AMD: `require(['svelte-viewport-info'], ...)`
+
+Alternatively, you may access the global Variable `Viewport` directly.
+
+### Usage within Svelte ###
 
 ```
 <script>
@@ -36,6 +56,30 @@ npm install svelte-viewport-info
 />
 ```
 
+### Usage in other Environments than Svelte ###
+
+When used in another environment than Svelte, please keep in mind, that screen orientation is only available when the `document.readyState` is either `'interactive'` or `'complete'`. As a consequence, you should make sure, that the document has been fully loaded, e.g., using
+
+```
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
+    console.log('standard Screen Orientation: ',Viewport.Orientation)
+    console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
+
+    document.body.addEventListener('viewportchanged', () => {
+      console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
+    }}
+  
+    document.body.addEventListener('orientationchangeend', () => { console.log(
+      'Screen Orientation changed to: ', Viewport.Orientation + (
+        Viewport.detailledOrientation == null
+        ? ''
+        : '(' + Viewport.detailledOrientation + ')'
+      )
+    ) }}
+  })
+```
+
 ### Example ###
 
 An example is available on the Svelte REPL - feel free to play with it!
@@ -44,7 +88,7 @@ An example is available on the Svelte REPL - feel free to play with it!
 
 ### Background Information ###
 
-This package determines the current viewport size and device (or viewport) orientation. In addition, it listens to the events sent when these values change and informs Svelte about such changes. The idea behind this approach is to normalize the behaviour of various platforms and browsers.
+This package determines the current viewport size and device (or viewport) orientation. In addition, it listens to the events sent when these values change and informs the application about such changes. The idea behind this approach is to normalize the behaviour of various platforms and browsers.
 
 The package's finding may either be retrieved using JavaScript or by styling a few CSS classes which are added to or removed from the document body depending on the current viewport `Orientation` or `detailledOrientation`.
 
@@ -82,6 +126,13 @@ These events may easily be caught as follows
   on:viewportchanged={...}
   on:orientationchangeend={...}
 />
+```
+
+or
+
+```
+document.body.addEventListener('viewportchanged',...)
+document.body.addEventListener('orientationchangeend',...)
 ```
 
 ### CSS Classes ###
