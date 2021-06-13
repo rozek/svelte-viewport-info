@@ -26,7 +26,7 @@ How to access the package depends on the type of module you prefer
 
 * ESM: `import Viewport from 'svelte-viewport-info'`
 * CommonJS: `const Viewport = require('svelte-viewport-info')`
-* AMD: `require(['svelte-viewport-info'], ...)`
+* AMD: `require(['svelte-viewport-info'], (Viewport) => {...})`
 
 Alternatively, you may access the global Variable `Viewport` directly.
 
