@@ -1,8 +1,12 @@
 # svelte-viewport-info #
 
-informs about viewport size and orientation
+informs about viewport size and orientation (not only for Svelte)
 
 **NPM users**: please consider the [Github README](https://github.com/rozek/svelte-viewport-info/blob/main/README.md) for the latest description of this package (as updating the docs would otherwise always require a new NPM package version)
+
+## Usage as an NPM Module ##
+
+`svelte-viewport-info` may be used as an NPM module or as a plain script file.
 
 ### Installation ###
 
@@ -34,6 +38,35 @@ npm install svelte-viewport-info
     )
   ) }}
 />
+```
+
+## Usage as a plain Script File ##
+
+When used as a plain script file, no installation is necessary. However, please keep in mind, that screen orientation is only available when `(document.readyState === 'interactive') || (document.readyState === 'complete')`
+
+### Usage ###
+
+```
+  <script src="https://unpkg.com/svelte-viewport-info"></script>
+  
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
+    console.log('standard Screen Orientation: ',Viewport.Orientation)
+    console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
+  })
+
+  body.addEventListener('viewportchanged', () => {
+    console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
+  }}
+  
+  body.addEventListener('orientationchangeend', () => { console.log(
+    'Screen Orientation changed to: ', Viewport.Orientation + (
+      Viewport.detailledOrientation == null
+      ? ''
+      : '(' + Viewport.detailledOrientation + ')'
+    )
+  ) }}
+
 ```
 
 ### Example ###
