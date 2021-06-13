@@ -103,9 +103,7 @@ The package's finding may either be retrieved using JavaScript or by styling a f
 
 #### JavaScript API ####
 
-This package offers a JavaScript `default` export, which may be imported as follows
-
-  `import Viewport from 'svelte-viewport-info'`
+This package offers a JavaScript `default` export, which may be imported (or `required`) as shown in the "Access" section above.
 
 With such an import, the JavaScript API can be used as follows:
 
