@@ -86,7 +86,7 @@ When used in another environment than Svelte, please note, that screen orientati
     Example()
   } else {
     window.addEventListener('DOMContentLoaded', Example)
-  })
+  }
 ```
 
 ### Example ###
