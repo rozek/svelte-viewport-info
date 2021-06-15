@@ -1,14 +1,13 @@
 {
   "name": "svelte-viewport-info",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "informs about viewport size and orientation",
   "main": "svelte-viewport-info.js",
   "module": "./svelte-viewport-info.esm.js",
   "exports": {
-    "require":"./svelte-viewport-info.js",
+    "require": "./svelte-viewport-info.js",
     "import": "./svelte-viewport-info.esm.js"
   },
-
   "scripts": {
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
