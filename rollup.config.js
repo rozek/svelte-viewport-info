@@ -4,17 +4,17 @@ import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser'
 
 export default {
-  input: './svelte-viewport-info.ts',
+  input: './src/svelte-viewport-info.ts',
   output: [
     {
-      dir:       './',
+      file:     './dist/svelte-viewport-info.js',
       format:    'umd', // builds for both Node.js and Browser
       name:      'Viewport', // required for UMD modules
       noConflict:true,
       sourcemap: true,
       exports:   'default',
     },{
-      file:     './svelte-viewport-info.esm.js',
+      file:     './dist/svelte-viewport-info.esm.js',
       format:   'esm',
       sourcemap:true
     }
