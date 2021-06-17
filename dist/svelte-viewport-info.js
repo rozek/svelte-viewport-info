@@ -4,6 +4,10 @@ var MediaMatcher = (window.matchMedia ||
 function MediaQuery(query) {
     return (MediaMatcher != null) && MediaMatcher(query).matches;
 }
+function DocumentIsReady() {
+    return ((document.readyState === 'interactive') ||
+        (document.readyState === 'complete'));
+}
 /**** determineViewportSize ****/
 // Internet Explorer and MS/Edge are NOT supported
 var ViewportWidth = 0; // given in px, explicit initialization...
@@ -46,27 +50,26 @@ function determineScreenOrientation() {
             }
             detailledScreenOrientation = undefined;
     }
-    document.body.classList.remove('Portrait', 'Landscape', 'Portrait-primary', 'Portrait-secondary', 'Landscape-primary', 'Landscape-secondary');
-    switch (ScreenOrientation) {
-        case 'portrait':
-            document.body.classList.add('Portrait');
-            break;
-        case 'landscape':
-            document.body.classList.add('Landscape');
-            break;
-    }
-    if (detailledScreenOrientation != null) {
-        var capitalized = function (Name) { return Name[0].toUpperCase() + Name.slice(1); };
-        document.body.classList.add(capitalized(detailledScreenOrientation));
+    if (DocumentIsReady()) {
+        document.body.classList.remove('Portrait', 'Landscape', 'Portrait-primary', 'Portrait-secondary', 'Landscape-primary', 'Landscape-secondary');
+        switch (ScreenOrientation) {
+            case 'portrait':
+                document.body.classList.add('Portrait');
+                break;
+            case 'landscape':
+                document.body.classList.add('Landscape');
+                break;
+        }
+        if (detailledScreenOrientation != null) {
+            var capitalized = function (Name) { return Name[0].toUpperCase() + Name.slice(1); };
+            document.body.classList.add(capitalized(detailledScreenOrientation));
+        }
     }
 }
-switch (document.readyState) {
-    case 'interactive':
-    case 'complete':
-        determineScreenOrientation(); // uses ViewportWidth/Height
-    default:
-        window.addEventListener('DOMContentLoaded', determineScreenOrientation);
-}
+determineScreenOrientation();
+if (!DocumentIsReady()) {
+    window.addEventListener('DOMContentLoaded', determineScreenOrientation);
+} // after document is loaded, classes will be applied as foreseen
 /**** handle problem that "orientationchange" is fired too soon ****/
 var oldViewportWidth = ViewportWidth;
 var oldViewportHeight = ViewportHeight;
@@ -79,6 +82,9 @@ function rememberSettings() {
     oldDetailledScreenOrientation = detailledScreenOrientation;
 }
 function submitEvents() {
+    if (!DocumentIsReady()) {
+        return;
+    }
     if ((oldViewportWidth !== ViewportWidth) || (oldViewportHeight !== ViewportHeight)) {
         document.body.dispatchEvent(new Event('viewportchanged', { bubbles: true, cancelable: true }));
     }
