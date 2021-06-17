@@ -17,10 +17,8 @@
     "url": "git+https://github.com/rozek/svelte-viewport-info.git"
   },
   "keywords": [
-    "svelte",
-    "svelte3",
-    "viewport",
-    "orientation"
+    "viewport-size",
+    "device-orientation"
   ],
   "author": "Andreas Rozek <a.rozek@gmx.de> (https://www.rozek.de/)",
   "license": "MIT",
