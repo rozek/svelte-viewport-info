@@ -58,14 +58,14 @@ Alternatively, you may access the global Variable `Viewport` directly.
 
 ### Usage in other Environments than Svelte ###
 
-When used in another environment than Svelte, please note, that screen orientation is only available when the `document.readyState` is either `'interactive'` or `'complete'`. As a consequence, you should make sure, that the document has been fully loaded, e.g., using
+Let's assume that you already "required" or "imported" (or simply loaded) the module according to your local environment. In that case, you may use it as follows:
 
 ```
-  function Example () {
-    console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
-    console.log('standard Screen Orientation: ',Viewport.Orientation)
-    console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
+  console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
+  console.log('standard Screen Orientation: ',Viewport.Orientation)
+  console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
 
+  function observeViewportAndOrientation () {
     document.body.addEventListener('viewportchanged', () => {
       console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
     }}
@@ -78,14 +78,14 @@ When used in another environment than Svelte, please note, that screen orientati
       )
     ) }}
   }
-
+  
   if (
     (document.readyState === 'interactive') ||
     (document.readyState === 'complete')
   ) {
-    Example()
+    observeViewportAndOrientation()
   } else {
-    window.addEventListener('DOMContentLoaded', Example)
+    window.addEventListener('DOMContentLoaded', observeViewportAndOrientation)
   }
 ```
 
