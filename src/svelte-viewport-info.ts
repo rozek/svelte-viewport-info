@@ -8,6 +8,13 @@
     return (MediaMatcher != null) && MediaMatcher(query).matches
   }
 
+  function DocumentIsReady ():boolean {
+    return (
+      (document.readyState === 'interactive') ||
+      (document.readyState === 'complete')
+    )
+  }
+
   /**** determineViewportSize ****/
   // Internet Explorer and MS/Edge are NOT supported
 
@@ -60,28 +67,28 @@
           detailledScreenOrientation = undefined
       }
 
-      document.body.classList.remove(
-        'Portrait','Landscape','Portrait-primary','Portrait-secondary',
-        'Landscape-primary','Landscape-secondary'
-      )
+      if (DocumentIsReady()) {
+        document.body.classList.remove(
+          'Portrait','Landscape','Portrait-primary','Portrait-secondary',
+          'Landscape-primary','Landscape-secondary'
+        )
 
-      switch (ScreenOrientation) {
-        case 'portrait':  document.body.classList.add('Portrait');  break
-        case 'landscape': document.body.classList.add('Landscape'); break
-      }
-      if (detailledScreenOrientation != null) {
-        const capitalized = (Name:string) => Name[0].toUpperCase() + Name.slice(1)
-        document.body.classList.add(capitalized(detailledScreenOrientation))
+        switch (ScreenOrientation) {
+          case 'portrait':  document.body.classList.add('Portrait');  break
+          case 'landscape': document.body.classList.add('Landscape'); break
+        }
+        if (detailledScreenOrientation != null) {
+          const capitalized = (Name:string) => Name[0].toUpperCase() + Name.slice(1)
+          document.body.classList.add(capitalized(detailledScreenOrientation))
+        }
       }
     }
 
-    switch (document.readyState) {
-      case 'interactive':
-      case 'complete':
-        determineScreenOrientation()                // uses ViewportWidth/Height
-      default:
-        window.addEventListener('DOMContentLoaded', determineScreenOrientation)
-    }
+    determineScreenOrientation()
+
+    if (! DocumentIsReady()) {
+      window.addEventListener('DOMContentLoaded', determineScreenOrientation)
+    }           // after document is loaded, classes will be applied as foreseen
 
   /**** handle problem that "orientationchange" is fired too soon ****/
 
@@ -100,6 +107,8 @@
     }
 
     function submitEvents ():void {
+      if (! DocumentIsReady()) { return }
+
       if ((oldViewportWidth !== ViewportWidth) || (oldViewportHeight !== ViewportHeight)) {
         document.body.dispatchEvent(
           new Event('viewportchanged', { bubbles:true, cancelable:true })
