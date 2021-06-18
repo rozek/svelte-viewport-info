@@ -30,7 +30,7 @@ How to access the package depends on the type of module you prefer
 
 Alternatively, you may access the global Variable `Viewport` directly.
 
-### Usage within Svelte ###
+### Usage as an ECMAscript Module (e.g., within Svelte) ###
 
 ```
 <script>
@@ -56,37 +56,37 @@ Alternatively, you may access the global Variable `Viewport` directly.
 />
 ```
 
-### Usage in other Environments than Svelte ###
+### Usage as a CommonJS or AMD Module (or as a global Variable) ###
 
 Let's assume that you already "required" or "imported" (or simply loaded) the module according to your local environment. In that case, you may use it as follows:
 
 ```
-  console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
-  console.log('standard Screen Orientation: ',Viewport.Orientation)
-  console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
+console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
+console.log('standard Screen Orientation: ',Viewport.Orientation)
+console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
 
-  function observeViewportAndOrientation () {
-    document.body.addEventListener('viewportchanged', () => {
-      console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
-    }}
+function observeViewportAndOrientation () {
+  document.body.addEventListener('viewportchanged', () => {
+    console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
+  }}
   
-    document.body.addEventListener('orientationchangeend', () => { console.log(
-      'Screen Orientation changed to: ', Viewport.Orientation + (
-        Viewport.detailledOrientation == null
-        ? ''
-        : '(' + Viewport.detailledOrientation + ')'
-      )
-    ) }}
-  }
+  document.body.addEventListener('orientationchangeend', () => { console.log(
+    'Screen Orientation changed to: ', Viewport.Orientation + (
+      Viewport.detailledOrientation == null
+      ? ''
+      : '(' + Viewport.detailledOrientation + ')'
+    )
+  ) }}
+}
   
-  if (
-    (document.readyState === 'interactive') ||
-    (document.readyState === 'complete')
-  ) {
-    observeViewportAndOrientation()
-  } else {
-    window.addEventListener('DOMContentLoaded', observeViewportAndOrientation)
-  }
+if (
+  (document.readyState === 'interactive') ||
+  (document.readyState === 'complete')
+) {
+  observeViewportAndOrientation()
+} else {
+  window.addEventListener('DOMContentLoaded', observeViewportAndOrientation)
+}
 ```
 
 ### Example ###
