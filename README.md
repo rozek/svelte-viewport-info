@@ -107,24 +107,24 @@ This package offers a JavaScript `default` export, which may be imported (or `re
 
 With such an import, the JavaScript API can be used as follows:
 
-* `Viewport.Width` - retrieves the current viewport width in pixels. If the actual viewport size can not be determined, the inner width of the current browser window is used instead
-* `Viewport.Height` - retrieves the current viewport height in pixels. If the actual viewport size can not be determined, the inner height of the current browser window is used instead<br>&nbsp;<br>
-* `Orientation` - retrieves the current device orientation. At first, a "media query" is attempted - if that does not work, the orientation is determined from the relation between viewport width and height. Possible results are:
-  * `portrait` - the device is in a "Portrait" orientation
-  * `landscape` - the device is in a "Landscape" orientation
-* `detailledOrientation` - informs about which (of the two possible) "Portrait" or "Landscape" orientations is actually active (if available). Possible results are:
-  * `portrait-primary` - the device is in its "primary" "Portrait" orientation (usually upright)
-  * `portrait-secondary` - the device is in its "secondary" "Portrait" orientation (usually upside down)
-  * `landscape-primary` - the device is in its "primary" "Landscape" orientation (usually turned right from primary Portrait orientation)
-  * `landscape-secondary` - the device is in its "secondary" "Landscape" orientation (usually turned left from primary Portrait orientation)
-  * undefined - no detail available
+* **`Viewport.Width`** - retrieves the current viewport width in pixels. If the actual viewport size can not be determined, the inner width of the current browser window is used instead
+* **`Viewport.Height`** - retrieves the current viewport height in pixels. If the actual viewport size can not be determined, the inner height of the current browser window is used instead<br>&nbsp;<br>
+* **`Orientation`** - retrieves the current device orientation. At first, a "media query" is attempted - if that does not work, the orientation is determined from the relation between viewport width and height. Possible results are:
+  * **`"portrait"`** - the device is in a "Portrait" orientation
+  * **`"landscape"`** - the device is in a "Landscape" orientation
+* **`detailledOrientation`** - informs about which (of the two possible) "Portrait" or "Landscape" orientations is actually active (if available). Possible results are:
+  * **`"portrait-primary"`** - the device is in its "primary" "Portrait" orientation (usually upright)
+  * **`"portrait-secondary"`** - the device is in its "secondary" "Portrait" orientation (usually upside down)
+  * **`"landscape-primary"`** - the device is in its "primary" "Landscape" orientation (usually turned right from primary Portrait orientation)
+  * **`"landscape-secondary"`** - the device is in its "secondary" "Landscape" orientation (usually turned left from primary Portrait orientation)
+  * **`undefined`** - no detail available
 
 #### Events ####
 
 Whenever viewport size and/or device orientation change, this package emits the following events:
 
-* `viewportchanged` - viewport size has changed
-* `orientationchangeend` - device orientation has changed
+* **`viewportchanged`** - viewport size has changed
+* **`orientationchangeend`** - device orientation has changed
 
 These events may easily be caught as follows
 
@@ -146,12 +146,12 @@ document.body.addEventListener('orientationchangeend',...)
 
 In addition, the package also adds or removes the following CSS classes depending on the current device orientation:
 
-* `Portrait` - indicates that the device is currently in any "Portrait" orientation
-* `Landscape` - indicates that the device is currently in any "Landscape" orientation
-* `Portrait-primary` - indicates that the device is currently in its primary "Portrait" orientation
-* `Portrait-secondary` - indicates that the device is currently in its secondary "Portrait" orientation
-* `Landscape-primary` - indicates that the device is currently in its primary "Landscape" orientation
-* `Landscape-secondary` - indicates that the device is currently in its secondary "Landscape" orientation
+* **`Portrait`** - indicates that the device is currently in any "Portrait" orientation
+* **`Landscape`** - indicates that the device is currently in any "Landscape" orientation
+* **`Portrait-primary`** - indicates that the device is currently in its primary "Portrait" orientation
+* **`Portrait-secondary`** - indicates that the device is currently in its secondary "Portrait" orientation
+* **`Landscape-primary`** - indicates that the device is currently in its primary "Landscape" orientation
+* **`Landscape-secondary`** - indicates that the device is currently in its secondary "Landscape" orientation
 
 Any of the listed CSS classes is set only if the package actually recognizes the corresponding orientation - otherwise, it is missing.
 
