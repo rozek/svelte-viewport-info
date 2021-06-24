@@ -4,7 +4,7 @@ informs about viewport size and orientation (not only in Svelte)
 
 **NPM users**: please consider the [Github README](https://github.com/rozek/svelte-viewport-info/blob/main/README.md) for the latest description of this package (as updating the docs would otherwise always require a new NPM package version)
 
-### Installation ###
+## Installation ##
 
 `svelte-viewport-info` may be used as an ESM, CommonJS or AMD module or from a global variable.
 
@@ -20,7 +20,7 @@ or load the plain script file directly
 <script src="https://unpkg.com/svelte-viewport-info"></script>
 ```
 
-### Access ###
+## Access ##
 
 How to access the package depends on the type of module you prefer
 
@@ -30,7 +30,7 @@ How to access the package depends on the type of module you prefer
 
 Alternatively, you may access the global Variable `Viewport` directly.
 
-### Usage as an ECMAscript Module (e.g., within Svelte) ###
+## Usage as an ECMAscript Module (e.g., within Svelte) ##
 
 ```
 <script>
@@ -56,7 +56,7 @@ Alternatively, you may access the global Variable `Viewport` directly.
 />
 ```
 
-### Usage as a CommonJS or AMD Module (or as a global Variable) ###
+## Usage as a CommonJS or AMD Module (or as a global Variable) ##
 
 Let's assume that you already "required" or "imported" (or simply loaded) the module according to your local environment. In that case, you may use it as follows:
 
@@ -89,19 +89,19 @@ if (
 }
 ```
 
-### Example ###
+## Example ##
 
 An example is available on the Svelte REPL - feel free to play with it!
 
 * [svelte-viewport-info](https://svelte.dev/repl/84ad979c06e84c5e8a98933554ab49c6)
 
-### Background Information ###
+## Background Information ##
 
 This package determines the current viewport size and device (or viewport) orientation. In addition, it listens to the events sent when these values change and informs the application about such changes. The idea behind this approach is to normalize the behaviour of various platforms and browsers.
 
 The package's finding may either be retrieved using JavaScript or by styling a few CSS classes which are added to or removed from the document body depending on the current viewport `Orientation` or `detailledOrientation`.
 
-#### JavaScript API ####
+### JavaScript API ###
 
 This package offers a JavaScript `default` export, which may be imported (or `required`) as shown in the "Access" section above.
 
@@ -119,7 +119,7 @@ With such an import, the JavaScript API can be used as follows:
   * **`"landscape-secondary"`** - the device is in its "secondary" "Landscape" orientation (usually turned left from primary Portrait orientation)
   * **`undefined`** - no detail available
 
-#### Events ####
+### Events ###
 
 Whenever viewport size and/or device orientation change, this package emits the following events:
 
@@ -142,7 +142,7 @@ document.body.addEventListener('viewportchanged',...)
 document.body.addEventListener('orientationchangeend',...)
 ```
 
-### CSS Classes ###
+## CSS Classes ##
 
 In addition, the package also adds or removes the following CSS classes depending on the current device orientation:
 
@@ -155,7 +155,7 @@ In addition, the package also adds or removes the following CSS classes dependin
 
 Any of the listed CSS classes is set only if the package actually recognizes the corresponding orientation - otherwise, it is missing.
 
-### Build Instructions ###
+## Build Instructions ##
 
 You may easily build this package yourself.
 
@@ -165,3 +165,7 @@ Just install [NPM](https://docs.npmjs.com/) according to the instructions for yo
 2. open a shell and navigate to the root directory of this repository
 3. run `npm install` in order to install the complete build environment
 4. execute `npm run build` to create a new build
+
+## License ##
+
+[MIT License](LICENSE.md)
