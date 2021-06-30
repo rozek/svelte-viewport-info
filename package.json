@@ -4,6 +4,7 @@
   "description": "informs about viewport size and orientation",
   "main": "./dist/svelte-viewport-info.js",
   "module": "./dist/svelte-viewport-info.esm.js",
+  "svelte": "./dist/svelte-viewport-info.esm.js",
   "exports": {
     "require": "./dist/svelte-viewport-info.js",
     "import": "./dist/svelte-viewport-info.esm.js"
