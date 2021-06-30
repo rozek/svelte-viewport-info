@@ -30,12 +30,16 @@ How to access the package depends on the type of module you prefer
 
 Alternatively, you may access the global variable `Viewport` directly.
 
-## Usage as an ECMAscript Module (e.g., within Svelte) ##
+## Usage within Svelte ##
+
+For Svelte it is recommended to import the package within a module context:
 
 ```
-<script>
+<script context="module">
   import Viewport from 'svelte-viewport-info'
+</script>
 
+<script>
   console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
   console.log('standard Screen Orientation: ',Viewport.Orientation)
   console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
@@ -54,6 +58,30 @@ Alternatively, you may access the global variable `Viewport` directly.
     )
   ) }}
 />
+```
+
+## Usage as an ECMAscript Module (e.g., within Svelte) ##
+
+```
+<script>
+  import Viewport from 'svelte-viewport-info'
+
+  console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
+  console.log('standard Screen Orientation: ',Viewport.Orientation)
+  console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
+
+  document.body.addEventListener('viewportchanged',() => {
+    console.log('Viewport Size changed to: ',Viewport.Width+'x'+Viewport.Height)
+  })
+
+  document.body.addEventListener('orientationchangeend',() => { console.log(
+    'Screen Orientation changed to: ', Viewport.Orientation + (
+      Viewport.detailledOrientation == null
+      ? ''
+      : '(' + Viewport.detailledOrientation + ')'
+    )
+  ) }
+</script>
 ```
 
 ## Usage as a CommonJS or AMD Module (or as a global Variable) ##
