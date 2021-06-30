@@ -1,6 +1,6 @@
 {
   "name": "svelte-viewport-info",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "informs about viewport size and orientation",
   "main": "./dist/svelte-viewport-info.js",
   "module": "./dist/svelte-viewport-info.esm.js",
