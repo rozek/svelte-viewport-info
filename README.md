@@ -60,7 +60,7 @@ For Svelte it is recommended to import the package within a module context:
 />
 ```
 
-## Usage as an ECMAscript Module (e.g., within Svelte) ##
+## Usage as an ECMAscript Module ##
 
 ```
 <script>
