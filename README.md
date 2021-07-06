@@ -24,7 +24,7 @@ or load the plain script file directly
 
 How to access the package depends on the type of module you prefer
 
-* ESM: `import Viewport from 'svelte-viewport-info'`
+* ESM (or Svelte): `import Viewport from 'svelte-viewport-info'`
 * CommonJS: `const Viewport = require('svelte-viewport-info')`
 * AMD: `require(['svelte-viewport-info'], (Viewport) => {...})`
 
