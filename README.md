@@ -6,7 +6,7 @@ informs about viewport size and orientation (not only in Svelte)
 
 ## Installation ##
 
-`svelte-viewport-info` may be used as an ESM, CommonJS or AMD module or from a global variable.
+`svelte-viewport-info` may be used as an ECMAScript module (ESM), a CommonJS or AMD module or from a global variable.
 
 You may either install the package into your build environment using [NPM](https://docs.npmjs.com/) with the command
 
