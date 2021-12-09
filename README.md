@@ -152,7 +152,7 @@ document.body.addEventListener('orientationchangeend',...)
 
 ## CSS Classes ##
 
-In addition, the package also adds or removes the following CSS classes depending on the current device orientation:
+In addition, the package also adds or removes the following CSS classes to and from the document body depending on the current device orientation:
 
 * **`Portrait`** - indicates that the device is currently in any "Portrait" orientation
 * **`Landscape`** - indicates that the device is currently in any "Landscape" orientation
