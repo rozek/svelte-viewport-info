@@ -117,10 +117,10 @@ With such an import, the JavaScript API can be used as follows:
 
 * **`Viewport.Width`** - retrieves the current viewport width in pixels. If the actual viewport size can not be determined, the inner width of the current browser window is used instead
 * **`Viewport.Height`** - retrieves the current viewport height in pixels. If the actual viewport size can not be determined, the inner height of the current browser window is used instead<br>&nbsp;<br>
-* **`Orientation`** - retrieves the current device orientation. At first, a "media query" is attempted - if that does not work, the orientation is determined from the relation between viewport width and height. Possible results are:
+* **`Viewport.Orientation`** - retrieves the current device orientation. At first, a "media query" is attempted - if that does not work, the orientation is determined from the relation between viewport width and height. Possible results are:
   * **`"portrait"`** - the device is in a "Portrait" orientation
   * **`"landscape"`** - the device is in a "Landscape" orientation
-* **`detailledOrientation`** - informs about which (of the two possible) "Portrait" or "Landscape" orientations is actually active (if available). Possible results are:
+* **`Viewport.detailledOrientation`** - informs about which (of the two possible) "Portrait" or "Landscape" orientations is actually active (if available). Possible results are:
   * **`"portrait-primary"`** - the device is in its "primary" "Portrait" orientation (usually upright)
   * **`"portrait-secondary"`** - the device is in its "secondary" "Portrait" orientation (usually upside down)
   * **`"landscape-primary"`** - the device is in its "primary" "Landscape" orientation (usually turned right from primary Portrait orientation)
