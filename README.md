@@ -18,7 +18,7 @@ npm install svelte-viewport-info
 
 or load the plain script file directly
 
-```
+```html
 <script src="https://unpkg.com/svelte-viewport-info"></script>
 ```
 
@@ -38,7 +38,7 @@ Note for ECMAScript module users: all module functions and values are exported i
 
 For Svelte it is recommended to import the package within a module context:
 
-```
+```html
 <script context="module">
   import Viewport from 'svelte-viewport-info'
 </script>
@@ -68,7 +68,7 @@ For Svelte it is recommended to import the package within a module context:
 
 Let's assume that you already "required" or "imported" (or simply loaded) the module according to your local environment. In that case, you may use it as follows:
 
-```
+```javascript
 console.log('Viewport Width x Height:     ',Viewport.Width+'x'+Viewport.Height)
 console.log('standard Screen Orientation: ',Viewport.Orientation)
 console.log('detailled Screen Orientation:',Viewport.detailledOrientation)
@@ -136,7 +136,7 @@ Whenever viewport size and/or device orientation change, this package emits the 
 
 These events may easily be caught as follows
 
-```
+```html
 <svelte:body
   on:viewportchanged={...}
   on:orientationchangeend={...}
@@ -145,7 +145,7 @@ These events may easily be caught as follows
 
 or
 
-```
+```javascript
 document.body.addEventListener('viewportchanged',...)
 document.body.addEventListener('orientationchangeend',...)
 ```
