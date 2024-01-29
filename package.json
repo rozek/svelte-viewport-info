@@ -6,16 +6,18 @@
   "main": "./dist/svelte-viewport-info.js",
   "module": "./dist/svelte-viewport-info.esm.js",
   "svelte": "./dist/svelte-viewport-info.esm.js",
-  "types": "./dist/svelte-viewport-info.d.ts",
   "exports": {
     ".": {
       "require": "./dist/svelte-viewport-info.js",
-      "import": "./dist/svelte-viewport-info.esm.js"
+      "import": "./dist/svelte-viewport-info.esm.js",
+      "svelte": "./dist/svelte-viewport-info.esm.js"
     },
     "./package.json": "./package.json"
   },
+  "types": "./dist/svelte-viewport-info.d.ts",
   "scripts": {
-    "build": "rimraf dist && rollup -c rollup.config.js && tsc && mv src/*.d.ts dist && rm src/*.js*",
+    "build": "rimraf dist && rollup -c rollup.config.js && tsc && mv src/*.d.ts dist && rm src/*.js* && rm -rf dist/src",
+    "agadoo": "agadoo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,8 +38,11 @@
     "@rollup/plugin-typescript": "^8.2.1",
     "agadoo": "^2.0.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.51.0",
+    "rollup": "^2.50.6",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "tslib": "^2.6.2"
   }
 }
