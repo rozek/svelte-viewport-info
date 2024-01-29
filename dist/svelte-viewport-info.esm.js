@@ -157,5 +157,5 @@ var svelteViewportInfo = {
     get detailledOrientation() { return detailledScreenOrientation; },
 };
 
-export default svelteViewportInfo;
+export { svelteViewportInfo as default };
 //# sourceMappingURL=svelte-viewport-info.esm.js.map
