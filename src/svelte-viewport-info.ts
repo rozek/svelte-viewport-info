@@ -36,6 +36,7 @@
     // see https://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript
 
     determineViewportSize()
+
   /**** determineScreenOrientation ****/
 
     type Orientation          = 'portrait'|'landscape'
@@ -197,7 +198,6 @@
       })
     }
 
-
   export default {
     get Width ()  { return ViewportWidth },
     get Height () { return ViewportHeight },
@@ -205,4 +205,3 @@
     get Orientation ()          { return ScreenOrientation },
     get detailledOrientation () { return detailledScreenOrientation },
   }
-
