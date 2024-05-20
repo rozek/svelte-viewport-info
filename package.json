@@ -10,6 +10,7 @@
     ".": {
       "require": "./dist/svelte-viewport-info.js",
       "import": "./dist/svelte-viewport-info.esm.js",
+      "types": "./dist/svelte-viewport-info.d.ts",
       "svelte": "./dist/svelte-viewport-info.esm.js"
     },
     "./package.json": "./package.json"
