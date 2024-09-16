@@ -1,13 +1,13 @@
 // see https://github.com/rozek/build-configuration-study
 
 import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser'
 
 export default {
   input: './src/svelte-viewport-info.ts',
   output: [
     {
-      file:     './dist/svelte-viewport-info.js',
+      file:     './dist/svelte-viewport-info.umd.js',
       format:    'umd', // builds for both Node.js and Browser
       name:      'Viewport', // required for UMD modules
       noConflict:true,
